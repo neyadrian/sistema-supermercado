@@ -1,20 +1,24 @@
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Tcp {
-    public static void main(String[] args) throws IOException {
+    public void iniciar(int porta) throws IOException {
 
-        String alimento;
-        double preco = 8.10;
+        ObjectOutputStream saida;
+        ObjectInputStream entrada;
+        boolean sair = false;
+        String alimento = "";
+
 
         try {
             ServerSocket servidor = new ServerSocket(12000);
 
-            while (true) {
+            while (!sair) {
                 Socket cliente = servidor.accept();
                 System.out.println("Cliente conectado: " + cliente.getInetAddress().getHostAddress());
-                System.out.println("Alimento: ");
 
             }
         }
