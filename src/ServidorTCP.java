@@ -1,36 +1,23 @@
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class ServidorTCP {
     public void iniciar(int porta) throws IOException {
 
-        ObjectOutputStream saida;
-        ObjectInputStream entrada;
-        boolean sair = false;
-        String alimento = "";
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o produto: ");
+        String produto = sc.nextLine();;
 
-        try {
-            ServerSocket servidor = new ServerSocket(12000);
-            Socket conexao;
-            while (!sair) {
-                Socket cliente = servidor.accept();
-                System.out.println("Cliente conectado: " + cliente.getInetAddress().getHostAddress());
+        try (Socket socket = new Socket("Localhost", 12000)) {
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                saida = new ObjectOutputStream(conexao.getOutputStream());
-                entrada = new ObjectInputStream(conexao.getInputStream());
-
-                saida.writeObject("Conexão estabelecida!");
-
-                do {
-                    try {
-                        alimento = (String) entrada.readObject();
-                    }
-
-                } while (!alimento.equals("sair"));
-            }
+            out.println(produto);
+            System.out.println("Preço recebido: " + in.readLine());
+        } catch (IOException e) {
+            System.err.println("Erro ao iniciar TCP.");
         }
 
     }
