@@ -37,25 +37,45 @@ Cliente UDP:
   Aguarda resposta com timeout de 2 segundos
 
 🚀 Como Executar
+
 1️⃣ Compile os arquivos
-  javac Main.java ServidorTCP.java ServidorUDP.jav
+
+  javac Main.java ServidorTCP.java ServidorUDP.java
+  
 2️⃣ Inicie o servidor
+
   java Main
+  
 Você verá:
+
   Servidor TCP iniciado na porta 12000.
+  
   Servidor UDP iniciado na porta 12001.
+  
 3️⃣ Execute o cliente TCP
+
   java ServidorTCP
+  
   Digite o produto (TCP): arroz
+  
   Preço: 25.00
+  
 4️⃣ Execute o cliente UDP
+
   java ServidorUDP
+  
   Digite o produto (UDP): cafe
+  
   Preço: 16.50
   
 📚 Conceitos Aplicados
+
   Programação em Java
+
   Sockets de rede
+  
   Comunicação TCP vs UDP
+  
   Threads
+  
   Estruturas de dados (HashMap)
