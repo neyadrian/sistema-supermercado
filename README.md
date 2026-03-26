@@ -12,6 +12,7 @@ O sistema permite consultar o preço de produtos a partir de um servidor central
   Consulta de produtos via UDP
   Servidor com lista fixa de produtos
   Resposta automática com o preço ou mensagem de erro
+  
 🧱 Estrutura do Projeto
   O projeto é composto por 3 classes principais:
 
