@@ -37,7 +37,7 @@ Cliente UDP:
 
 🚀 Como Executar
 1️⃣ Compile os arquivos
-  javac Main.java ServidorTCP.java ServidorUDP.java
+  javac Main.java ServidorTCP.java ServidorUDP.jav
 2️⃣ Inicie o servidor
   java Main
 Você verá:
