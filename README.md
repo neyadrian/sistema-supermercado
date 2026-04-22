@@ -1,81 +1,118 @@
-🛒 Sistema de Consulta de Produtos (TCP e UDP)
+# 🛒 Sistema de Consulta de Produtos (TCP e UDP)
 
-Este projeto é uma aplicação simples em Java que implementa comunicação cliente-servidor utilizando dois protocolos de rede:
+## 📌 Contexto do Sistema
+Este projeto consiste em uma aplicação cliente-servidor desenvolvida em Java que permite a consulta de preços de produtos utilizando dois protocolos de comunicação em rede: TCP e UDP.
 
-🔵 TCP (Transmission Control Protocol)
-🟢 UDP (User Datagram Protocol)
+O sistema simula um servidor central que mantém um catálogo fixo de produtos e responde às requisições feitas pelos clientes.
 
-O sistema permite consultar o preço de produtos a partir de um servidor central.
+---
 
-📌 Funcionalidades
-  Consulta de produtos via TCP
-  Consulta de produtos via UDP
-  Servidor com lista fixa de produtos
-  Resposta automática com o preço ou mensagem de erro
-  
-🧱 Estrutura do Projeto
-  O projeto é composto por 3 classes principais:
+## 🧱 Estrutura do Projeto
 
-🔹 Main.java
+```
 
-Responsável por iniciar o servidor:
-  Inicia o servidor TCP na porta 12000
-  Inicia o servidor UDP na porta 12001
-  Mantém um catálogo de produtos com preços
-  
-🔹 ServidorTCP.java
+src/
+└── src/
+├── Main.java
+├── ServidorTCP.java
+└── ServidorUDP.java
 
-Cliente TCP:
-  Solicita ao usuário o nome de um produto
-  Envia a requisição ao servidor via TCP
-  Exibe o preço retornado
-🔹 ServidorUDP.java
+```
 
-Cliente UDP:
-  Solicita ao usuário o nome de um produto
-  Envia a requisição ao servidor via UDP
-  Aguarda resposta com timeout de 2 segundos
+---
 
-🚀 Como Executar
+## ⚙️ Funcionalidades
 
-1️⃣ Compile os arquivos
+- Consulta de produtos via protocolo TCP  
+- Consulta de produtos via protocolo UDP  
+- Servidor central com catálogo de produtos  
+- Retorno automático do preço do produto  
+- Tratamento de produtos inexistentes  
+- Comunicação baseada em sockets  
+- Uso de threads para múltiplas conexões  
 
-  javac Main.java ServidorTCP.java ServidorUDP.java
-  
-2️⃣ Inicie o servidor
+---
 
-  java Main
-  
-Você verá:
+## 🧩 Componentes do Sistema
 
-  Servidor TCP iniciado na porta 12000.
-  
-  Servidor UDP iniciado na porta 12001.
-  
-3️⃣ Execute o cliente TCP
+### 🔹 Main.java (Servidor)
+- Responsável por iniciar o sistema
+- Inicia:
+  - Servidor TCP na porta 12000
+  - Servidor UDP na porta 12001
+- Mantém um catálogo de produtos utilizando `HashMap`
+- Gerencia requisições dos clientes
 
-  java ServidorTCP
-  
-  Digite o produto (TCP): arroz
-  
-  Preço: 25.00
-  
-4️⃣ Execute o cliente UDP
+---
 
-  java ServidorUDP
-  
-  Digite o produto (UDP): cafe
-  
-  Preço: 16.50
-  
-📚 Conceitos Aplicados
+### 🔹 ServidorTCP.java (Cliente TCP)
+- Solicita ao usuário o nome de um produto
+- Estabelece conexão com o servidor via TCP
+- Envia a requisição
+- Recebe e exibe o preço retornado
 
-  Programação em Java
+---
 
-  Sockets de rede
-  
-  Comunicação TCP vs UDP
-  
-  Threads
-  
-  Estruturas de dados (HashMap)
+### 🔹 ServidorUDP.java (Cliente UDP)
+- Solicita ao usuário o nome de um produto
+- Envia requisição ao servidor via UDP
+- Aguarda resposta com timeout de 2 segundos
+- Exibe o preço ou mensagem de erro
+
+---
+
+## 🔄 Fluxo de Funcionamento
+
+1. O servidor é iniciado (TCP e UDP simultaneamente)  
+2. O cliente envia o nome de um produto  
+3. O servidor busca no catálogo  
+4. Retorna:
+   - Preço do produto (se existir)
+   - Mensagem de erro (se não encontrado)  
+
+---
+
+## 🌐 Protocolos Utilizados
+
+### 🔵 TCP (Transmission Control Protocol)
+- Orientado à conexão  
+- Confiável (garante entrega)  
+- Comunicação contínua entre cliente e servidor  
+
+### 🟢 UDP (User Datagram Protocol)
+- Não orientado à conexão  
+- Mais rápido, porém sem garantia de entrega  
+- Uso de timeout para controle de resposta  
+
+---
+
+## 🔐 Regras de Negócio
+
+- O catálogo de produtos é fixo  
+- A busca é feita pelo nome do produto  
+- Caso o produto não exista, o sistema retorna uma mensagem apropriada  
+- No UDP, caso não haja resposta, o cliente informa timeout  
+
+---
+
+## 🧠 Estruturas Utilizadas
+
+- HashMap (armazenamento de produtos)  
+- Sockets TCP e UDP  
+- Threads  
+- Scanner  
+
+---
+
+## 📚 Tecnologias Utilizadas
+
+- Java  
+- Java Networking (Sockets)  
+
+---
+
+## 👨‍💻 Autor
+Ney Adrian
+
+---
+Projeto desenvolvido para fins acadêmicos.
